@@ -1,8 +1,17 @@
-const express = require('express');
-const Database = require('better-sqlite3');
-const path = require('path');
+const express = require("express");
+const cors = require("cors");
+const Database = require("better-sqlite3");
+const path = require("path");
 
 const app = express();
+
+app.use(cors({
+  origin: [
+    "https://headset.herdmate.ag",
+    "https://weather.herdmate.ag"
+  ]
+}));
+
 const PORT = process.env.PORT || 3001;
 const OWM_KEY = process.env.OWM_KEY || '';
 const CACHE_MINUTES = parseInt(process.env.CACHE_MINUTES || '5');
